@@ -1,6 +1,5 @@
 from django.db import models
-from django.forms import CharField, SlugField
-
+from teachers.models import Teacher
 
 # Create your models here.
 class Category(models.Model):
@@ -21,6 +20,7 @@ class Tag(models.Model):
 
 
 class Course(models.Model):
+    teacher = models.ForeignKey(Teacher, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, unique=True)
     category = models.ForeignKey(Category, null=True, on_delete=models.DO_NOTHING)
     tag = models.ManyToManyField(Tag, blank=True, null=True)
