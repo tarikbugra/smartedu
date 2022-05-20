@@ -11,9 +11,19 @@ class Category(models.Model):
         return self.name
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=50, null=True)
+    slug = models.SlugField(max_length=50, null=True)
+
+    def __str__(self) -> str:
+        return self.name
+
+
+
 class Course(models.Model):
     name = models.CharField(max_length=200, unique=True)
     category = models.ForeignKey(Category, null=True, on_delete=models.DO_NOTHING)
+    tag = models.ManyToManyField(Tag, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='courses/%Y/%m/%d/', default='courses/CINA.png')
     date = models.DateTimeField(auto_now=True)
