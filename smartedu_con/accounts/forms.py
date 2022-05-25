@@ -18,11 +18,11 @@ class LoginForm(forms.Form):
 
 class RegisterForm(UserCreationForm):
 
-    firstname = forms.CharField(widget=forms.TextInput(attrs={
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control', 
         'placeholder': 'First Name'
         }))
-    lastname = forms.CharField(widget=forms.TextInput(attrs={
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control', 
         'placeholder': 'Last Name'
         }))
@@ -46,5 +46,5 @@ class RegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['firstname', 'lastname', 'username', 'email', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
 
