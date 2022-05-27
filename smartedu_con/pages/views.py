@@ -4,6 +4,8 @@ from courses.models import Course
 from .forms import ContactForm
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.models import User
+from teachers.models import Teacher
 
 
 
@@ -15,6 +17,8 @@ class IndexView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['last_courses'] = Course.objects.filter(available=True).order_by('-date',)[:2]
         context['total_course'] = Course.objects.filter(available=True).count()
+        context['total_student'] = User.objects.count()
+        context['total_teacher'] = Teacher.objects.count()
         return context
 
 
