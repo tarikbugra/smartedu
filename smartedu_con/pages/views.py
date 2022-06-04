@@ -39,16 +39,3 @@ class ContactView(SuccessMessageMixin, FormView):
         form.save()
         return super().form_valid(form)
 
-
-
-
-
-
-
-
-
-# def index(request):
-#     return render(request, 'index.html')
-
-# def about(request):
-#     return render(request, 'about.html')
